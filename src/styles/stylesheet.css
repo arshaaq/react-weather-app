@@ -53,6 +53,26 @@ table {
   border-spacing: 0;
 }
 
-h1 {
-  color: red;
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: lightblue;
+}
+
+#weather-box {
+  width: 50vw;
+  max-width: 1000px;
+  min-width: 1000px;
+  height: 50vh;
+  max-height: 1000px;
+  min-height: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 100px;
+  background-color: salmon;
 }/*# sourceMappingURL=stylesheet.css.map */
