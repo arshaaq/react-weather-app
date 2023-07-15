@@ -1,5 +1,5 @@
 @use "./base";
-
+@use "./header";
 *{
 
 }
@@ -15,20 +15,35 @@ body{
     background-color: lightblue;
 }
 
-#weather-box{
-    width: 50vw;
-    max-width: 1000px;
-    min-width: 1000px;
+form{
+    display: flex;
+    justify-content: center;
+    
+    padding-bottom: 50px;
 
-    height: 50vh;
-    max-height: 1000px;
-    min-height: 1000px;
+    #search-bar{
+        width: 300px;
+        height: 50px;
+        border-radius: 10px;
+        font-size: 20px;
+        text-align: center;
+    }
+}
+
+#weather-box{
+    width: 1000px;
+    max-width: 50vw;
+    min-width: 25vw;
+
+    height: 25vh;
+    max-height: 500px;
+    min-height: 500px;
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    row-gap: 100px;
+    
 
     background-color: salmon;
 }
