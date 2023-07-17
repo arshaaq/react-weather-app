@@ -54,12 +54,30 @@ table {
 }
 
 .header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
-  height: 50px;
+  height: 100px;
   background-color: red;
+}
+.header #form-search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header #form-search-bar #search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 300px;
+  height: 50px;
+  border-radius: 10px;
+  font-size: 20px;
+  text-align: center;
 }
 
 body {
@@ -69,19 +87,6 @@ body {
   align-items: center;
   justify-content: center;
   background-color: lightblue;
-}
-
-form {
-  display: flex;
-  justify-content: center;
-  padding-bottom: 50px;
-}
-form #search-bar {
-  width: 300px;
-  height: 50px;
-  border-radius: 10px;
-  font-size: 20px;
-  text-align: center;
 }
 
 #weather-box {
