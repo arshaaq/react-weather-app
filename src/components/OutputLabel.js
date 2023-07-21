@@ -1,9 +1,9 @@
-const OutputLabel = ({labelName,text}) =>{
+const OutputLabel = ({name, text}) =>{
 
     return(
     <>
     
-        <p>{labelName}: {text}</p>
+        <p className = {name}>{text}</p>
     </> 
     );
         

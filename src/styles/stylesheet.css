@@ -3,6 +3,62 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+@import url("https://fonts.googleapis.com/css2?family=Jost&display=swap");
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* CSS RESET */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -62,7 +118,7 @@ table {
   left: 0;
   width: 100vw;
   height: 100px;
-  background-color: red;
+  background-color: #1b1b2e;
 }
 .header #form-search-bar {
   display: flex;
@@ -86,19 +142,58 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: lightblue;
+  background-color: #d6d6dd;
 }
 
-#weather-box {
+.weather-box {
+  transition: opacity 0.5s ease, top 1s ease;
+  position: relative;
+  top: 100px;
   width: 1000px;
-  max-width: 50vw;
+  max-width: 40vw;
   min-width: 25vw;
   height: 25vh;
   max-height: 500px;
   min-height: 500px;
+  border: solid 10px #1b1b2e;
+  border-radius: 3%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background-color: salmon;
+  font-family: "Jost", sans-serif;
+  font-size: 30px;
+  opacity: 0;
+  color: #d6d6dd;
+  background-color: #1b1b2e;
+}
+.weather-box .weather-box_header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  font-weight: 600;
+  background-color: #1b1b2e;
+}
+.weather-box .weather-box_main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 90%;
+  height: 80px;
+  border-radius: 3%;
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: #1b1b2e;
+  background-color: #d6d6dd;
+  flex-grow: 0.8;
+}
+
+.countryFound {
+  position: relative;
+  opacity: 1;
+  top: 0px;
 }/*# sourceMappingURL=stylesheet.css.map */
