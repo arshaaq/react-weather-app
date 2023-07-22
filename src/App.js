@@ -34,6 +34,25 @@ function App() {
 
 
 //---------------------------------FUNCTIONS----------------------------------------------//
+
+const backgroundChange = (weatherType) =>{
+  console.log("DING");
+ if(weatherType.includes("clouds")){
+  document.body.style.backgroundImage = "url('./weather-backgrounds/overcast_clouds.jpg')";
+ }else if(weatherType.includes("sky")){
+  document.body.style.backgroundImage = "url('./weather-backgrounds/clear_sky.jpg')";
+ }else{
+  document.body.style.backgroundImage = "url('')";
+ }
+ 
+
+
+
+
+}
+
+
+
   const getCountryData = () =>{
     fetch('https://restcountries.com/v3.1/all')
     .then(response=>{
@@ -48,9 +67,9 @@ function App() {
     .then(response=>{
       return response.json()
     }).then(data =>{
-      console.log(data);
       setWeather(data.weather[0].description);
       setTemperature(data.main.temp + " degrees celsius");
+      
     });
 
   }
@@ -71,9 +90,11 @@ function App() {
       if(country.name.common.toLowerCase() == filter.toLowerCase()){
 
         getCountryWeather();
+        backgroundChange(weather);
         pickedCountry = country.name.common;
         pickedWeather = weather;
         pickedTemperature = temperature;
+        
 
         //set a delay so that info update doesn't look funky on the UI
         setTimeout(() => {
@@ -83,6 +104,7 @@ function App() {
         
       }else{
         weatherBox.classList.remove('countryFound');
+        backgroundChange("");
       }
     }
   }

@@ -137,12 +137,17 @@ table {
 }
 
 body {
+  transition-property: background-image;
+  transition-duration: 1s;
   width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #d6d6dd;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .weather-box {
