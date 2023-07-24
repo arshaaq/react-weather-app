@@ -42,7 +42,7 @@ const backgroundChange = (weatherType) =>{
  }else if(weatherType.includes("sky")){
   document.body.style.backgroundImage = "url('./weather-backgrounds/clear_sky.jpg')";
  }else{
-  document.body.style.backgroundImage = "url('')";
+  //document.body.style.backgroundImage = "url('')";
  }
  
 
