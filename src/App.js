@@ -40,7 +40,7 @@ const backgroundChange = (weatherType) =>{
  if(weatherType.includes("clouds")){
   document.body.style.backgroundImage = "url('./weather-backgrounds/overcast_clouds.jpg')";
  }else if(weatherType.includes("sky")){
-  document.body.style.backgroundImage = "url('./weather-backgrounds/clear_sky.jpg')";
+  document.body.style.backgroundImage = "url('https://arshaaq.github.io/react-weather-app/static/media/clear_sky.38346b00dc2840c3885a.jpg')";
  }else{
   //document.body.style.backgroundImage = "url('')";
  }
