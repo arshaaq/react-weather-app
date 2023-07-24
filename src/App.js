@@ -38,11 +38,11 @@ function App() {
 const backgroundChange = (weatherType) =>{
   console.log("DING");
  if(weatherType.includes("clouds")){
-  document.body.style.backgroundImage = "url('./weather-backgrounds/overcast_clouds.jpg')";
+  document.body.style.backgroundImage = "url('https://arshaaq.github.io/react-weather-app/static/media/overcast_clouds.e2730b8a4538a0fa774e.jpg')";
  }else if(weatherType.includes("sky")){
   document.body.style.backgroundImage = "url('https://arshaaq.github.io/react-weather-app/static/media/clear_sky.38346b00dc2840c3885a.jpg')";
  }else{
-  //document.body.style.backgroundImage = "url('')";
+  document.body.style.backgroundImage = "url('')";
  }
  
 
