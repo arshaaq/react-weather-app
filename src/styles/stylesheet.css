@@ -148,7 +148,22 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.overcastClouds {
   background-image: url("./weather-backgrounds/overcast_clouds.jpg");
+}
+
+.clearSky {
+  background-image: url("./weather-backgrounds/clear_sky.jpg");
+}
+
+.mist {
+  background-image: url("./weather-backgrounds/mist.jpg");
+}
+
+.rain {
+  background-image: url("./weather-backgrounds/rain.jpg");
 }
 
 .weather-box {
@@ -156,7 +171,7 @@ body {
   position: relative;
   top: 100px;
   width: 1000px;
-  max-width: 40vw;
+  max-width: 500px;
   min-width: 25vw;
   height: 25vh;
   max-height: 500px;

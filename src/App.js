@@ -22,6 +22,7 @@ function App() {
   const[temperature, setTemperature] = useState('')
   const[weather, setWeather] = useState('')
 
+
   let pickedCountry = "";
   let pickedWeather = "";
   let pickedTemperature = "";
@@ -36,13 +37,25 @@ function App() {
 //---------------------------------FUNCTIONS----------------------------------------------//
 
 const backgroundChange = (weatherType) =>{
-  console.log("DING");
+ 
  if(weatherType.includes("clouds")){
-  document.body.style.backgroundImage = "url('https://arshaaq.github.io/react-weather-app/static/media/overcast_clouds.e2730b8a4538a0fa774e.jpg')";
+  document.body.classList.remove(...document.body.classList);
+  document.body.classList.add('overcastClouds');
+  
  }else if(weatherType.includes("sky")){
-  document.body.style.backgroundImage = "url('https://arshaaq.github.io/react-weather-app/static/media/clear_sky.38346b00dc2840c3885a.jpg')";
- }else{
-  //document.body.style.backgroundImage = "url('')";
+  document.body.classList.remove(...document.body.classList);
+  document.body.classList.add('clearSky');
+
+}else if(weatherType.includes("mist")){
+  document.body.classList.remove(...document.body.classList);
+  document.body.classList.add('mist');
+
+}else if(weatherType.includes("rain")){
+  document.body.classList.remove(...document.body.classList);
+  document.body.classList.add('rain');
+
+}else{
+  document.body.classList.remove(...document.body.classList);
  }
  
 
