@@ -154,6 +154,14 @@ body {
   background-image: url("./weather-backgrounds/overcast_clouds.jpg");
 }
 
+.scatteredClouds {
+  background-image: url("./weather-backgrounds/scattered_clouds.jpg");
+}
+
+.fewClouds {
+  background-image: url("./weather-backgrounds/few_clouds.jpg");
+}
+
 .clearSky {
   background-image: url("./weather-backgrounds/clear_sky.jpg");
 }
@@ -211,6 +219,34 @@ body {
   color: #1b1b2e;
   background-color: #d6d6dd;
   flex-grow: 0.8;
+}
+.weather-box .weather-box_main #temperature {
+  transition-property: color;
+  transition-duration: 1s;
+}
+.weather-box .very_cold {
+  color: rgb(0, 191, 255);
+}
+.weather-box .cold {
+  color: rgb(0, 140, 255);
+}
+.weather-box .chill {
+  color: rgb(0, 38, 255);
+}
+.weather-box .fridge {
+  color: rgb(0, 255, 170);
+}
+.weather-box .okay {
+  color: rgb(217, 255, 0);
+}
+.weather-box .warm {
+  color: rgb(255, 174, 0);
+}
+.weather-box .hot {
+  color: rgb(255, 115, 0);
+}
+.weather-box .very_hot {
+  color: rgb(255, 0, 0);
 }
 
 .countryFound {

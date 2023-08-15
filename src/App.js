@@ -1,16 +1,6 @@
 import './styles/stylesheet.css'
-import {gsap} from "gsap";
-import ScrollTrigger from 'gsap/ScrollTrigger';
-import ScrollToPlugin from 'gsap/ScrollToPlugin';
-
-
 import { useEffect, useState } from 'react';
 import OutputLabel from './components/OutputLabel';
-
-
-
-
-
 
 function App() {
 
@@ -36,12 +26,52 @@ function App() {
 
 //---------------------------------FUNCTIONS----------------------------------------------//
 
-const backgroundChange = (weatherType) =>{
- 
- if(weatherType.includes("clouds")){
+const UIChange = (weatherType, temperature) =>{
+
+  const temperatureNumber = parseInt(temperature.replace(" degrees celsius",""));
+  const textTemperature = document.getElementById("temperature");
+  textTemperature.classList.remove(...textTemperature.classList);
+
+ //for temperature
+ if(temperatureNumber <= -30){
+  
+  textTemperature.classList.add("very_cold");
+
+ } else if (temperatureNumber > -30 && temperatureNumber <= -10 ){
+  textTemperature.classList.add("cold");
+
+ } else if (temperatureNumber > -10 && temperatureNumber <= 0 ){
+  textTemperature.classList.add("chill");
+
+ } else if (temperatureNumber > 0 && temperatureNumber <= 4 ){
+  textTemperature.classList.add("fridge");
+
+ } else if (temperatureNumber > 4 && temperatureNumber <= 15 ){
+  textTemperature.classList.add("okay");
+
+ } else if (temperatureNumber > 15 && temperatureNumber <= 25 ){
+  textTemperature.classList.add("warm");
+
+ } else if (temperatureNumber > 25 && temperatureNumber <= 30 ){
+  textTemperature.classList.add("hot");
+
+  } else if (temperatureNumber > 30){
+  textTemperature.classList.add("very_hot");
+  }
+
+ //for the type of weather
+ if(weatherType.includes("overcast clouds")){
   document.body.classList.remove(...document.body.classList);
   document.body.classList.add('overcastClouds');
   
+ }else if(weatherType.includes("few clouds")){
+  document.body.classList.remove(...document.body.classList);
+  document.body.classList.add('fewClouds');
+
+}else if(weatherType.includes("scattered clouds") || weatherType.includes("broken clouds")){
+  document.body.classList.remove(...document.body.classList);
+  document.body.classList.add('scatteredClouds');
+
  }else if(weatherType.includes("sky")){
   document.body.classList.remove(...document.body.classList);
   document.body.classList.add('clearSky');
@@ -55,16 +85,10 @@ const backgroundChange = (weatherType) =>{
   document.body.classList.add('rain');
 
 }else{
-  document.body.classList.remove(...document.body.classList);
+  //document.body.classList.remove(...document.body.classList);
  }
  
-
-
-
-
 }
-
-
 
   const getCountryData = () =>{
     fetch('https://restcountries.com/v3.1/all')
@@ -103,7 +127,7 @@ const backgroundChange = (weatherType) =>{
       if(country.name.common.toLowerCase() == filter.toLowerCase()){
 
         getCountryWeather();
-        backgroundChange(weather);
+        UIChange(weather, temperature);
         pickedCountry = country.name.common;
         pickedWeather = weather;
         pickedTemperature = temperature;
@@ -117,7 +141,7 @@ const backgroundChange = (weatherType) =>{
         
       }else{
         weatherBox.classList.remove('countryFound');
-        backgroundChange("");
+        UIChange("","");
       }
     }
   }

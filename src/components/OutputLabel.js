@@ -3,7 +3,7 @@ const OutputLabel = ({name, text}) =>{
     return(
     <>
     
-        <p className = {name}>{text}</p>
+        <p className = {name} id={name}>{text}</p>
     </> 
     );
         
