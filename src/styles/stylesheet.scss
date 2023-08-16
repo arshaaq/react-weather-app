@@ -26,27 +26,57 @@ body{
 
 }
 
+
+
+#tutorial-text-container{
+    transition-property: opacity;
+
+    position: absolute;
+    top:20rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    //opacity: 0; /* Start with full transparency */
+    opacity: 0.5;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 50px;
+
+    font-family: 'Jost', sans-serif;
+    font-size: 3rem;
+    text-align: center;
+
+    z-index: -1;
+
+
+
+    .up-arrow-icon{
+
+    }
+}
+
+
 .overcastClouds{
     background-image: url('./weather-backgrounds/overcast_clouds.jpg');
 }
-
 .scatteredClouds{
     background-image: url('./weather-backgrounds/scattered_clouds.jpg');
 }
 
+  
 .fewClouds{
     background-image: url('./weather-backgrounds/few_clouds.jpg');
 }
-
 .clearSky{
     background-image: url('./weather-backgrounds/clear_sky.jpg');
 }
-
 .mist{
     background-image: url('./weather-backgrounds/mist.jpg');    
 }
-
 .rain{
+    
     background-image: url('./weather-backgrounds/rain.jpg');    
 }
 
@@ -55,18 +85,18 @@ body{
     transition: opacity 0.5s ease, top 1s ease;
 
     position: relative;
-    top: 100px;
+    
 
-    width: 1000px;
+    width: 80vw;
     max-width: 500px;
     min-width: 25vw;
 
-    height: 25vh;
+    height: 10vh;
     max-height: 500px;
-    min-height: 500px;
+    min-height: 400px;
 
     border: solid 10px $secondary-color;
-    border-radius: 3%;
+    border-radius: 25px;
 
     display: flex;
     flex-direction: column;
@@ -88,6 +118,7 @@ body{
 
         width: 100%;
         height: 50px;
+        
 
         font-weight: 600;
         background-color: $secondary-color;
@@ -105,6 +136,7 @@ body{
         width: 90%;
         height: 80px;
 
+        padding: 5px;
         border-radius: 3%;
         text-align: center;
         margin-bottom: 10px;
@@ -157,3 +189,5 @@ body{
     opacity: 1;
     top: 0px;
 }
+
+@import "./media_query";
