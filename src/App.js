@@ -9,9 +9,16 @@ function App() {
 
   const[countryName, setCountryName] = useState('')
   const[countries, setCountries] = useState([])
-  const[temperature, setTemperature] = useState('')
   const[weather, setWeather] = useState('')
 
+  const[temperature, setTemperature] = useState('')
+  const[tempUnit, setUnit] = useState('celsius')
+  let unit = "°C";
+  if(tempUnit == 'celsius'){
+    unit = "°C";
+  } else {
+    unit = "°F";
+  }
 
   let pickedCountry = "";
   let pickedWeather = "";
@@ -28,7 +35,7 @@ function App() {
 
 const UIChange = (weatherType, temperature) =>{
 
-  const temperatureNumber = parseInt(temperature.replace(" degrees celsius",""));
+  const temperatureNumber = parseInt(temperature.replace(`${unit}`,""));
   const textTemperature = document.getElementById("temperature");
   textTemperature.classList.remove(...textTemperature.classList);
 
@@ -125,12 +132,48 @@ const UIChange = (weatherType, temperature) =>{
     .then(response=>{
       return response.json()
     }).then(data =>{
-      setWeather(data.weather[0].description);
-      setTemperature(data.main.temp + " degrees celsius");
+      let dataTemp = data.main.temp;
+      let dataWeather = data.weather[0].description;
+
+      //console.log(data.main);
+      setWeather(dataWeather);
+
+      if(tempUnit=="celsius"){
+        setTemperature(dataTemp + `${unit}`);
+      } else {
+        dataTemp = (data.main.temp * 9/5) + 32;
+        setTemperature(dataTemp + `${unit}`);
+      }
+      
       
     });
 
   }
+
+//temperature unit change
+
+  const changeTemperatureUnit = ()=>{
+
+   switch (tempUnit) {
+    case "celsius":
+      document.getElementById("unit-icon").classList.remove("celsius");
+      document.getElementById("unit-icon").classList.add("fahrenheit");
+      setUnit("fahrenheit");
+      break;
+
+    case "fahrenheit":
+      document.getElementById("unit-icon").classList.add("celsius");
+      document.getElementById("unit-icon").classList.remove("fahrenheit");
+      setUnit("celsius");
+      break;
+   
+    default:
+      break;
+   }
+  }
+//add the function to onclick with element:
+
+
 
 //gets country name
   const handleChange = (event) =>{
@@ -139,6 +182,7 @@ const UIChange = (weatherType, temperature) =>{
   }
 
   useEffect(() => {
+    
     getCountryData();
   }, []);
 
@@ -186,16 +230,9 @@ const UIChange = (weatherType, temperature) =>{
         <input id="search-bar" type="text" value={countryName} onChange={handleChange}/>
       </form>
 
-      <svg width="50" height="50" viewBox="0 0 75 75" fill="none" xmlns="http://www.w3.org/2000/svg" id='question-icon'>
-      <g clipPath="url(#clip0_306_13)">
-      <path fillRule="evenodd" clipRule="evenodd" d="M75 37.5C75 47.4456 71.0491 56.9839 64.0165 64.0165C56.9839 71.0491 47.4456 75 37.5 75C27.5544 75 18.0161 71.0491 10.9835 64.0165C3.95088 56.9839 0 47.4456 0 37.5C0 27.5544 3.95088 18.0161 10.9835 10.9835C18.0161 3.95088 27.5544 0 37.5 0C47.4456 0 56.9839 3.95088 64.0165 10.9835C71.0491 18.0161 75 27.5544 75 37.5ZM30.8036 28.125C30.8036 26.8006 31.1963 25.5059 31.9321 24.4047C32.6679 23.3034 33.7138 22.4451 34.9374 21.9383C36.161 21.4315 37.5074 21.2989 38.8064 21.5572C40.1054 21.8156 41.2986 22.4534 42.2351 23.3899C43.1716 24.3264 43.8094 25.5196 44.0678 26.8186C44.3261 28.1176 44.1935 29.464 43.6867 30.6876C43.1799 31.9112 42.3216 32.9571 41.2203 33.6929C40.1191 34.4287 38.8244 34.8214 37.5 34.8214C36.4344 34.8214 35.4124 35.2447 34.6589 35.9982C33.9055 36.7517 33.4821 37.7737 33.4821 38.8393V42.3C33.4821 43.3656 33.9055 44.3876 34.6589 45.1411C35.4124 45.8945 36.4344 46.3179 37.5 46.3179C38.5656 46.3179 39.5876 45.8945 40.3411 45.1411C41.0945 44.3876 41.5179 43.3656 41.5179 42.3C44.1565 41.5534 46.5345 40.0854 48.3843 38.0611C50.2342 36.0369 51.4827 33.5367 51.9892 30.8416C52.4958 28.1466 52.2404 25.3637 51.2517 22.8059C50.2631 20.2481 48.5804 18.0169 46.3929 16.3632C44.2055 14.7095 41.6 13.6989 38.8696 13.445C36.1391 13.1912 33.392 13.7042 30.9372 14.9263C28.4824 16.1485 26.4173 18.0313 24.974 20.363C23.5308 22.6947 22.7668 25.3828 22.7679 28.125C22.7679 29.1906 23.1912 30.2126 23.9447 30.9661C24.6982 31.7195 25.7201 32.1429 26.7857 32.1429C27.8513 32.1429 28.8733 31.7195 29.6268 30.9661C30.3803 30.2126 30.8036 29.1906 30.8036 28.125ZM42.8571 56.25C42.8571 57.6708 42.2927 59.0334 41.2881 60.0381C40.2834 61.0427 38.9208 61.6071 37.5 61.6071C36.0792 61.6071 34.7166 61.0427 33.7119 60.0381C32.7073 59.0334 32.1429 57.6708 32.1429 56.25C32.1429 54.8292 32.7073 53.4666 33.7119 52.4619C34.7166 51.4573 36.0792 50.8929 37.5 50.8929C38.9208 50.8929 40.2834 51.4573 41.2881 52.4619C42.2927 53.4666 42.8571 54.8292 42.8571 56.25Z" fill="#D6D6DD"/>
-      </g>
-      <defs>
-      <clipPath id="clip0_306_13">
-      <rect width="75" height="75" fill="white"/>
-      </clipPath>
-      </defs>
-      </svg>
+      <div id='unit-icon' onClick={changeTemperatureUnit} className='celsius'>
+
+      </div>
 
       </header>
 

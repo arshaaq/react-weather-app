@@ -19,9 +19,21 @@
         left: 1vw;
     }
 
-    #question-icon{
+    #unit-icon{
+        width: 60px;
+        height: 60px;
         position: relative;
         right: 1vw;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .celsius{
+        background-image: url('./svgs/celsius_icon.png');
+    }
+    .fahrenheit{
+        background-image: url('./svgs/fahrenheit_icon.png');
     }
 
     
