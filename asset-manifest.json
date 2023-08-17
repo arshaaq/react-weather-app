@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-weather-app/static/css/main.f88e1d19.css",
-    "main.js": "/react-weather-app/static/js/main.9ae83a79.js",
+    "main.css": "/react-weather-app/static/css/main.57d0a6f0.css",
+    "main.js": "/react-weather-app/static/js/main.2e5e800d.js",
     "static/media/clear_sky.jpg": "/react-weather-app/static/media/clear_sky.676421a625131d60cbae.jpg",
     "static/media/scattered_clouds.jpg": "/react-weather-app/static/media/scattered_clouds.22efb88db95171671fbf.jpg",
     "static/media/rain.jpg": "/react-weather-app/static/media/rain.277d3b3d5e39099ad964.jpg",
@@ -9,11 +9,11 @@
     "static/media/overcast_clouds.jpg": "/react-weather-app/static/media/overcast_clouds.48ad32e20618890c854f.jpg",
     "static/media/mist.jpg": "/react-weather-app/static/media/mist.be3a311d29abf2802d4b.jpg",
     "index.html": "/react-weather-app/index.html",
-    "main.f88e1d19.css.map": "/react-weather-app/static/css/main.f88e1d19.css.map",
-    "main.9ae83a79.js.map": "/react-weather-app/static/js/main.9ae83a79.js.map"
+    "main.57d0a6f0.css.map": "/react-weather-app/static/css/main.57d0a6f0.css.map",
+    "main.2e5e800d.js.map": "/react-weather-app/static/js/main.2e5e800d.js.map"
   },
   "entrypoints": [
-    "static/css/main.f88e1d19.css",
-    "static/js/main.9ae83a79.js"
+    "static/css/main.57d0a6f0.css",
+    "static/js/main.2e5e800d.js"
   ]
 }
