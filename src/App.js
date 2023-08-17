@@ -327,6 +327,10 @@ const UIChange = (weatherType, temperature) =>{
 
         <p>enter a country here!</p>
       </div>
+
+      <footer>
+        <p> powered by https://openweathermap.org/ © 2012</p>
+      </footer>
     </>
 
 
