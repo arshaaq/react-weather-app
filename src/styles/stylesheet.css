@@ -164,6 +164,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url(./weather-backgrounds/clear_sky.jpg);
   background-color: #d6d6dd;
   background-size: cover;
   background-repeat: no-repeat;
@@ -335,5 +336,11 @@ body {
   .weather-box_main #temperature {
     transition-property: color;
     transition-duration: 1s;
+  }
+  #weather-icon {
+    display: none;
+  }
+  #unit-icon {
+    display: none;
   }
 }/*# sourceMappingURL=stylesheet.css.map */

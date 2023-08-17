@@ -10,7 +10,7 @@ function App() {
   const[countryName, setCountryName] = useState('')
   const[countries, setCountries] = useState([])
   const[weather, setWeather] = useState('')
-
+  const[humidity, setHumidity] = useState('')
   const[temperature, setTemperature] = useState('')
   const[tempUnit, setUnit] = useState('celsius')
   let unit = "°C";
@@ -22,6 +22,7 @@ function App() {
 
   let pickedCountry = "";
   let pickedWeather = "";
+  let pickedHumidity = "";
   let pickedTemperature = "";
 
 
@@ -39,53 +40,113 @@ const UIChange = (weatherType, temperature) =>{
   const textTemperature = document.getElementById("temperature");
   textTemperature.classList.remove(...textTemperature.classList);
 
+
  //for temperature
- if(temperatureNumber <= -30){
+ switch(tempUnit){
   
-  textTemperature.classList.add("very_cold");
+  case("celsius"):
+    if(temperatureNumber <= -30){
+      
+      textTemperature.classList.add("very_cold");
+      setTimeout(() => {
+        textTemperature.classList.remove(...textTemperature.classList);
+      }, 500);
 
- } else if (temperatureNumber > -30 && temperatureNumber <= -10 ){
-  textTemperature.classList.add("cold");
-  setTimeout(() => {
-    textTemperature.classList.remove(...textTemperature.classList);
-  }, 1000);
+    } else if (temperatureNumber > -30 && temperatureNumber <= -10 ){
+      textTemperature.classList.add("cold");
+      setTimeout(() => {
+        textTemperature.classList.remove(...textTemperature.classList);
+      }, 500);
 
- } else if (temperatureNumber > -10 && temperatureNumber <= 0 ){
-  textTemperature.classList.add("chill");
-  setTimeout(() => {
-    textTemperature.classList.remove(...textTemperature.classList);
-  }, 1000);
+    } else if (temperatureNumber > -10 && temperatureNumber <= 0 ){
+      textTemperature.classList.add("chill");
+      setTimeout(() => {
+        textTemperature.classList.remove(...textTemperature.classList);
+      }, 500);
 
- } else if (temperatureNumber > 0 && temperatureNumber <= 4 ){
-  textTemperature.classList.add("fridge");
-  setTimeout(() => {
-    textTemperature.classList.remove(...textTemperature.classList);
-  }, 1000);
+    } else if (temperatureNumber > 0 && temperatureNumber <= 4 ){
+      textTemperature.classList.add("fridge");
+      setTimeout(() => {
+        textTemperature.classList.remove(...textTemperature.classList);
+      }, 1000);
 
- } else if (temperatureNumber > 4 && temperatureNumber <= 15 ){
-  textTemperature.classList.add("okay");
-  setTimeout(() => {
-    textTemperature.classList.remove(...textTemperature.classList);
-  }, 1000);
+    } else if (temperatureNumber > 4 && temperatureNumber <= 15 ){
+      textTemperature.classList.add("okay");
+      setTimeout(() => {
+        textTemperature.classList.remove(...textTemperature.classList);
+      }, 500);
 
- } else if (temperatureNumber > 15 && temperatureNumber <= 25 ){
-  textTemperature.classList.add("warm");
-  setTimeout(() => {
-    textTemperature.classList.remove(...textTemperature.classList);
-  }, 1000);
+    } else if (temperatureNumber > 15 && temperatureNumber <= 25 ){
+      textTemperature.classList.add("warm");
+      setTimeout(() => {
+        textTemperature.classList.remove(...textTemperature.classList);
+      }, 1000);
 
- } else if (temperatureNumber > 25 && temperatureNumber <= 30 ){
-  textTemperature.classList.add("hot");
-  setTimeout(() => {
-    textTemperature.classList.remove(...textTemperature.classList);
-  }, 1000);
+    } else if (temperatureNumber > 25 && temperatureNumber <= 30 ){
+      textTemperature.classList.add("hot");
+      setTimeout(() => {
+        textTemperature.classList.remove(...textTemperature.classList);
+      }, 500);
 
-  } else if (temperatureNumber > 30){
-  textTemperature.classList.add("very_hot");
-  setTimeout(() => {
-    textTemperature.classList.remove(...textTemperature.classList);
-  }, 1000);
-  }
+    } else if (temperatureNumber > 30){
+      textTemperature.classList.add("very_hot");
+      setTimeout(() => {
+        textTemperature.classList.remove(...textTemperature.classList);
+      }, 500);
+    }
+    break;
+  case("fahrenheit"):
+    if(temperatureNumber <= -22){
+        
+      textTemperature.classList.add("very_cold");
+      setTimeout(() => {
+        textTemperature.classList.remove(...textTemperature.classList);
+      }, 500);
+
+    } else if (temperatureNumber > -22 && temperatureNumber <= 14 ){
+      textTemperature.classList.add("cold");
+      setTimeout(() => {
+        textTemperature.classList.remove(...textTemperature.classList);
+      }, 500);
+
+    } else if (temperatureNumber > -14 && temperatureNumber <= 32 ){
+      textTemperature.classList.add("chill");
+      setTimeout(() => {
+        textTemperature.classList.remove(...textTemperature.classList);
+      }, 500);
+
+    } else if (temperatureNumber > 32 && temperatureNumber <= 39.2 ){
+      textTemperature.classList.add("fridge");
+      setTimeout(() => {
+        textTemperature.classList.remove(...textTemperature.classList);
+      }, 500);
+
+    } else if (temperatureNumber > 39.2 && temperatureNumber <= 59 ){
+      textTemperature.classList.add("okay");
+      setTimeout(() => {
+        textTemperature.classList.remove(...textTemperature.classList);
+      }, 500);
+
+    } else if (temperatureNumber > 59 && temperatureNumber <= 77 ){
+      textTemperature.classList.add("warm");
+      setTimeout(() => {
+        textTemperature.classList.remove(...textTemperature.classList);
+      }, 1000);
+
+    } else if (temperatureNumber > 77 && temperatureNumber <= 86 ){
+      textTemperature.classList.add("hot");
+      setTimeout(() => {
+        textTemperature.classList.remove(...textTemperature.classList);
+      }, 500);
+
+    } else if (temperatureNumber > 86){
+      textTemperature.classList.add("very_hot");
+      setTimeout(() => {
+        textTemperature.classList.remove(...textTemperature.classList);
+      }, 500);
+    }
+  break;
+}
 
  //for the type of weather
  if(weatherType.includes("overcast clouds")){
@@ -117,7 +178,7 @@ const UIChange = (weatherType, temperature) =>{
  }
  
 }
-
+  //get's a list of countries
   const getCountryData = () =>{
     fetch('https://restcountries.com/v3.1/all')
     .then(response=>{
@@ -127,25 +188,30 @@ const UIChange = (weatherType, temperature) =>{
     })
   }
 
+  //gets specific country weather
   const getCountryWeather = () =>{
     fetch(apiUrl)
     .then(response=>{
       return response.json()
     }).then(data =>{
-      let dataTemp = data.main.temp;
+      //temperature to two decimal places
+      let dataTemp = data.main.temp.toFixed(2);
+      //weather description
       let dataWeather = data.weather[0].description;
+      //humidity
+      let dataHumidity = data.main.humidity;
 
       //console.log(data.main);
-      setWeather(dataWeather);
-
       if(tempUnit=="celsius"){
         setTemperature(dataTemp + `${unit}`);
       } else {
-        dataTemp = (data.main.temp * 9/5) + 32;
-        setTemperature(dataTemp + `${unit}`);
+        let dataFahrenTemp = (dataTemp * 9/5) + 32;
+        setTemperature(dataFahrenTemp.toFixed(2) + `${unit}`);
       }
       
-      
+      setWeather(dataWeather);
+      setHumidity(dataHumidity + "%");
+
     });
 
   }
@@ -201,6 +267,7 @@ const UIChange = (weatherType, temperature) =>{
         pickedCountry = country.name.common;
         pickedWeather = weather;
         pickedTemperature = temperature;
+        pickedHumidity = humidity;
         
 
         //set a delay so that info update doesn't look funky on the UI
@@ -240,11 +307,15 @@ const UIChange = (weatherType, temperature) =>{
 
       <section id="weather-box" className='weather-box'>
         <div className="weather-box_header">
-          <OutputLabel name="country" text={pickedCountry}/>
+          <h1>{pickedCountry}</h1>
+          <div id='unit-icon' onClick={changeTemperatureUnit} className='celsius'>
+            
+          </div>
         </div>
 
         <div className='weather-box_main'>
           <OutputLabel name="weather" text={pickedWeather}/>
+          <OutputLabel name="humidity" text={pickedHumidity}/>
           <OutputLabel name="temperature" text={pickedTemperature}/>
         </div>
       </section>
